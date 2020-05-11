@@ -115,7 +115,7 @@ summary(tt_norm)
 tt_predict<-knn(train = df_norm, test = tt_norm, cl= castdf[,3],k=18)
 
 
-# probability model: assume 40% is threshold 
+# probability model: 40% is threshold 
 pred_t <- casttt %>% mutate(pred_sample = tt_predict)
 pred1_t <- pred_t%>%group_by(id)%>% summarise(actual_count = length(id))
 pred2_t <- pred_t%>%group_by(id,pred_sample)%>% summarise(pred_count = length(pred_sample))%>%dcast(id~pred_sample,value.var = 'pred_count')%>%
